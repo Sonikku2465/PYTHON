@@ -1,0 +1,82 @@
+Файл — это всего лишь набор данных, сохраненный в виде последовательности битов на компьютере. Информация хранится в куче данных (структура данных) и имеет название «имя файла» (filename).
+
+В Python существует два типа файлов:
+Текстовые;
+Бинарные.
+
+Текстовые файлы - это файлы с человекочитаемым содержимым. В них хранятся последовательности символов, которые понимает человек. Блокнот и другие стандартные редакторы умеют читать и редактировать этот тип файлов. Текст может храниться в двух форматах: (.txt) — простой текст и (.rtf) — «формат обогащенного текста».
+В бинарных файлах данные отображаются в закодированной форме (с использованием только нулей (0) и единиц (1) вместо простых символов). В большинстве случаев это просто последовательности битов. Они хранятся в формате .bin.
+Любую операцию с файлом можно разбить на три крупных этапа:
+Открытие файла - Метод open() - f = open(file_name, access_mode);
+
+Выполнение операции (запись, чтение) - функция read() - file.read(size),
+file.write(string);
+
+Закрытие файла - Метод close() - f = open('example.txt','r')
+# работа с файлом
+f.close(),
+f = open('example.txt','r')
+try:
+   # работа с файлом
+finally:
+   f.close(),
+with open('example.txt') as f:
+    # работа с файлом
+
+Модулем в Python называется любой файл с программой (да-да, все те программы, которые вы писали, можно назвать модулями). Каждая программа может импортировать модуль и получить доступ к его классам, функциям и объектам.
+Подключение модуля из стандартной библиотеки:
+>>> import os
+>>> os.getcwd()
+'C:\\Python33'
+
+>>> import time, random
+>>> time.time()
+1376047104.056417
+>>> random.random()
+0.9874550833306869
+
+>>> import math
+>>> math.e
+2.718281828459045
+
+>>> import notexist
+Traceback (most recent call last):
+  File "", line 1, in
+    import notexist
+ImportError: No module named 'notexist'
+>>> import math
+>>> math.Ё
+Traceback (most recent call last):
+  File "", line 1, in
+    math.Ё
+AttributeError: 'module' object has no attribute 'Ё'
+
+Создание своего модуля на Python:
+def hello():
+    print('Hello, world!')
+
+def fib(n):
+    a = b = 1
+    for i in range(n - 2):
+        a, b = b, a + b
+    return b
+import mymodule
+
+mymodule.hello()
+print(mymodule.fib(10))
+Hello, world!
+55
+
+def hello():
+    print('Hello, world!')
+
+def fib(n):
+    a = b = 1
+    for i in range(n - 2):
+        a, b = b, a + b
+    return b
+
+if __name__ == "__main__":
+    hello()
+    for i in range(10):
+        print(fib(i))
